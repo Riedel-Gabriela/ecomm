@@ -1,5 +1,5 @@
-use("ecomm");
+use('ecomm');
 
-var categories = db.categories.find();
+const categories = db.categories.find();
 
 console.log(categories);
