@@ -103,7 +103,6 @@ paths:
           description: unauthorized
         '400':
           description: invalid ID supplied
-
   /api/orders/{id}:
     get:
       summary: Find order

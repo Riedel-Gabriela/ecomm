@@ -1,8 +1,15 @@
+# docker-compose up --force-recreate --build
 version: "3.9"
 services:
   ecomm:
     build: .
     container_name: ecomm
+    ports:
+      - 3000:3000
+    environment:
+      MONGO_HOST: mongo-ecomm
+    depends_on:
+      - mongo-ecomm
 
   mongo-ecomm:
     image: mongo
