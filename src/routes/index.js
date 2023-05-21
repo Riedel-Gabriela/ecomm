@@ -5,6 +5,7 @@ import YAML from 'yaml';
 
 import categories from './categoriesRoutes.js';
 import products from './productsRoutes.js';
+import accounts from './accountsRoutes.js';
 
 const file = fs.readFileSync('src/swagger/ecomm.yaml', 'utf8');
 const swaggerDocument = YAML.parse(file);
@@ -20,6 +21,7 @@ const routes = (app) => {
     express.json(),
     categories,
     products,
+    accounts,
   );
 };
 

@@ -1,15 +1,17 @@
 # docker-compose up --force-recreate --build
 version: "3.9"
 services:
-  ecomm:
-    build: .
-    container_name: ecomm
-    ports:
-      - 3000:3000
-    environment:
-      MONGO_HOST: mongo-ecomm
-    depends_on:
-      - mongo-ecomm
+  # ecomm:
+  #   build: .
+  #   container_name: ecomm
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     MONGO_HOST: mongo-ecomm
+  #     REDIS_HOST: redis-ecomm
+  #   depends_on:
+  #     - mongo-ecomm
+  #     - redis-ecomm
 
   mongo-ecomm:
     image: mongo
@@ -26,5 +28,15 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: secret
 
+  redis-ecomm:
+    image: redis
+    volumes:
+    - redis_data:/data
+    container_name: redis-ecomm
+    restart: always
+    ports:
+    - 6379:6379
+
 volumes:
   db-mongo-ecomm:
+  redis_data:
