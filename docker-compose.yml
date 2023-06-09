@@ -14,7 +14,7 @@ services:
     volumes:
       - db-mongo-ecomm:/data/db
       - type: bind
-        source: $HOST/C:/Users/gabir/OneDrive/Documentos/NxtDev/ecomm
+        source: $HOST/C:/NxtDev/ecomm
         target: /mongo-scripts
     restart: always
     ports:
