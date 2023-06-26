@@ -4,6 +4,12 @@ services:
   ecomm:
     build: .
     container_name: app-ecomm
+    depends_on:
+      - mongo-ecomm
+    environment:
+      - MONGO_HOST=${MONGO_HOST:-127.0.0.1}
+    ports:
+      - 3000:3000
 
   mongo-ecomm:
     image: mongo
@@ -13,9 +19,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret
     volumes:
       - db-mongo-ecomm:/data/db
-      - type: bind
-        source: $HOST/C:/Users/gabir/OneDrive/Documentos/NxtDev/ecomm
-        target: /mongo-scripts
     restart: always
     ports:
       - 27017:27017
